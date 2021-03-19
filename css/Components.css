@@ -1,4 +1,27 @@
-﻿/*Loading Spinner*/
+﻿/*Carousel and Emoji*/
+
+.carousel-caption {
+    text-shadow: 2px 1px black;
+}
+
+.mx-flag::before {
+    content: "\01F1F2 \01F1FD";
+}
+
+.heart::before {
+    content: "\2764";
+}
+
+.hover-opacity {
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.hover-opacity:hover {
+    opacity: 1;
+}
+
+/*Loading Spinner*/
 
 .lds-ripple {
     display: inline-block;
