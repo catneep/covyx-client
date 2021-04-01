@@ -70,20 +70,23 @@
 .spinner-caption {
     position: absolute;
     bottom: -5%;
-    left: 22.5%;
+    /*left: 22.5%;*/
+    left: 16%;
 }
 
 /*Input File*/
 
 .hide-input {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
+    width: 10rem;
 }
 
 .hide-input input {
     opacity: 0;
-    position: absolute;
+    left: 0;
+    /*position: absolute;*/
     width: 100%;
     height: 100%;
 }
