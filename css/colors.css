@@ -1,0 +1,46 @@
+﻿:root {
+    --covyxBabyBlue: #B1D4E0;
+    --covyxBlue: #2E8BC0;
+    --covyxDarkBlue: #0C2D48;
+    --covyxMidnightBlue: #145DA0;
+}
+
+.color1 {
+    color: #0662d2;
+}
+
+.color2 {
+    color: #039efb;
+}
+
+.color3 {
+    color: #6bdefe;
+}
+
+.color4 {
+    color: #ccfdf7;
+}
+
+.color5 {
+    color: #fffbf4;
+}
+
+.is-covyx-primary {
+    background-color: var(--covyxBlue) !important;
+    color: #fff !important;
+}
+
+.is-covyx-secondary {
+    background-color: var(--covyxBabyBlue);
+    color: #363636;
+}
+
+.is-covyx-dark {
+    background-color: var(--covyxDarkBlue);
+    color: #fff;
+}
+
+.is-covyx-info {
+    background-color: var(--covyxMidnightBlue);
+    color: #fff;
+}

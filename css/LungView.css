@@ -1,0 +1,35 @@
+﻿.has-heatmap {
+    display: flex;
+    width: 420px;
+    height: auto;
+    position: relative;
+    align-items: center;
+}
+
+    .has-heatmap img {
+        width: 400px;
+        position: relative;
+    }
+
+    .has-heatmap canvas {
+        opacity: 0.85;
+        height: auto;
+        width: auto;
+    }
+
+#heatmap-container {
+    position: relative;
+    display: flex;
+}
+
+    #heatmap-container img {
+        position: relative;
+    }
+
+#imgArea {
+    position: absolute;
+}
+
+.is-invisible {
+    opacity: 0;
+}
