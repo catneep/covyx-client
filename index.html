@@ -30,9 +30,28 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+        .is-gauge-grid {
+            display: grid;width: 100%;grid-template-columns: repeat(3, 1fr);grid-template-rows: 2.5fr 0.5fr;
+            grid-template-areas:
+                "meterA meterB meterC"
+                "infoA infoB infoC";
+        }
+        #meterA {grid-area: meterA;}
+        #meterB {grid-area: meterB;}
+        #meterC {grid-area: meterC;}
+        #infoA {grid-area: infoA;}
+        #infoB {grid-area: infoB;}
+        #infoC {grid-area: infoC;}
+    </style>
 </head>
 
 <body>
+    <!--<script type="text/javascript">
+        caches.delete("blazor-resources-/").then(function (e) {
+            console.log("'blazor-resources-/' cache deleted");
+        });
+    </script>-->
     <div id="app">
 
         <div id="spin" class="columns is-mobile is-multiline is-gapless" style="margin-top: 20vh; z-index:12;">
@@ -52,7 +71,7 @@
         <a class="dismiss">🗙</a>
     </div>
 
-    <script src="_framework/blazor.webassembly.js"></script>
+    <script defer src="_framework/blazor.webassembly.js"></script>
 </body>
 
 </html>

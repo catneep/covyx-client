@@ -1,20 +1,35 @@
-﻿function positionIsDrawable(point) {
-    return true;
-    var img = document.getElementById('lungsArea');
-
-    var canvas = document.createElement('canvas');
+﻿function positionIsDrawable(point, area) {
+    const img = area;
     let dim = img.getBoundingClientRect();
-    canvas.width = dim.width;
-    canvas.height = dim.height;
+    let areasX = [];
+    let areasY = [];
 
-    canvas.getContext('2d').drawImage(img, 0, 0, dim.width, dim.height);
-    var alpha = canvas.getContext('2d').getImageData(point.x, point.y, 1, 1).data[3];
-    return alpha > 0;
+    let portionX = dim.width / 5;
+    let portionY = dim.height / 4;
+    for (let i = 0; i < 5; i++) {
+        areasX.push(portionX * (i + 1));
+    }
+
+    for (let i = 0; i < 4; i++) {
+        areasY.push(portionY * (i + 1));
+    }
+
+    return (
+        (
+            (point.x > areasX[0] && point.x < areasX[2])
+            ||
+            (point.x > areasX[2] && point.x < areasX[3])
+        ) &&
+        (
+            point.y > areasY[0] && point.y < areasY[3]
+        )
+    );
 }
 
-function calculatePoints() {
+function calculatePoints(area) {
     let count = 0;
-    var img = document.getElementById('lungsArea');
+    //let img = document.getElementById('lungsArea');
+    let img = area
 
     var canvas = document.createElement('canvas');
     let dim = img.getBoundingClientRect();
@@ -25,7 +40,7 @@ function calculatePoints() {
 
     for (j = 0; j < dim.width; j++) {
         for (i = 0; i < dim.height; i++) {
-            var alpha = canvas.getContext('2d').getImageData(j, i, 1, 1).data[3];
+            let alpha = canvas.getContext('2d').getImageData(j, i, 1, 1).data[3];
             if (alpha > 0) {
                 count++;
                 console.log(i + ', ' + j + ' is a valid point');
@@ -37,20 +52,26 @@ function calculatePoints() {
     console.log('valid points: ' + count);
 }
 
-function randomPoint(width, i) {
+function randomPoint(width, i, damage) {
     var point = {
         x: Math.floor(Math.random() * width),
         y: i,
-        value: Math.floor(Math.random() * 100),
-        radius: Math.floor(Math.random() * 30)
+        value: Math.floor(Math.random() * damage),
+        radius: Math.floor(Math.random() * 20)
     };
     return point;
 }
 
-function drawHeatMapToCanvas(containerID) {
-    calculatePoints();
-    var canvasParent = document.getElementById(containerID);
-    var mapInstance = h337.create({
+async function drawHeatMapToCanvas(lungs, area, damage) {
+    //calculatePoints(area);
+    console.log('Lungs:');
+    console.log(lungs);
+
+    console.log('Area:');
+    console.log(area);
+
+    const canvasParent = lungs;
+    let mapInstance = h337.create({
         container: canvasParent,
         maxOpacity: 0.9,
         gradient: {
@@ -61,17 +82,13 @@ function drawHeatMapToCanvas(containerID) {
     });
     
     let dim = canvasParent.getBoundingClientRect();
-    var points = [];
-    var width = dim.width;
-    var height = dim.height;
-
-    console.log(canvasParent)
-    console.log(dim);
+    let points = [];
+    let width = dim.width;
+    let height = dim.height;
 
     for (i = 0; i < height; i++) {
-        var point;
-        point = randomPoint(width, i);
-        if (positionIsDrawable(point)) {
+        let point = randomPoint(width, i, damage);
+        if (positionIsDrawable(point, area) && points.length <= damage * 100) {
             points.push(point);
         }
     }
@@ -88,8 +105,9 @@ function drawHeatMapToCanvas(containerID) {
     //parent.remove();
 
     //canvasParent.style.position = 'relative';
-    let heat = document.querySelector('.heatmap-canvas');
-    heat.classList.add('is-4by3');
+    //let heat = document.querySelector('.heatmap-canvas');
+    //heat.classList.add('is-4by3');
+    return;
 }
 
 function addContentClass() {
