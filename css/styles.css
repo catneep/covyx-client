@@ -41,9 +41,9 @@ nav {
     background-size: cover;
 }
 
-    #header > section p {
-        text-shadow: 2px 2px 8px black;
-    }
+#header > section p {
+    text-shadow: 2px 2px 8px black;
+}
 
 #cards {
     padding: 3rem;
@@ -55,8 +55,12 @@ nav {
     color: #fff;
 }
 
-.column.has-image {
-    background-image: url(https://cdn.pixabay.com/photo/2014/12/14/21/23/x-ray-image-568241_960_720.jpg);
+#sectionA .column.has-image {
+    background-image: url(/img/placehold2.jpg);
+    background-size: cover;
+}
+#sectionB .column.has-image {
+    background-image: url(/img/placehold.webp);
     background-size: cover;
 }
 
